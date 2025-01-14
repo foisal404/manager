@@ -9,15 +9,18 @@ const port = process.env.PORT || 5000;
 
 
 //middleware
-app.use(cors())
-// const corsOptions = {
-//     origin: '*',
-//     credentials: true,
-//     optionSuccessStatus: 200,
-// }
-// app.use(cors(corsOptions))
+// app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:5173', // Allow requests from this origin
+}));
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200,
+}
+app.use(cors(corsOptions))
 
-app.use(express.json())
+// app.use(express.json())
 
 
 // dB Connection
