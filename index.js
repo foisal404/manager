@@ -10,9 +10,7 @@ const port = process.env.PORT || 5000;
 
 //middleware
 // app.use(cors()
-app.use(cors({
-    origin: 'http://localhost:5173', // Allow requests from this origin
-}));
+app.use(express.json())
 
 const corsOptions = {
     origin: '*',
@@ -21,7 +19,7 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 
-app.use(express.json())
+
 
 
 // dB Connection
