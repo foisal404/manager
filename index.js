@@ -9,7 +9,6 @@ const port = process.env.PORT || 5000;
 
 
 //middleware
-// app.use(cors()
 const corsOptions = {
     origin: '*',
     credentials: true,
@@ -34,7 +33,6 @@ const client = new MongoClient(url, {
 
 async function run() {
     try {
-        // Connect the client to the server	(optional starting in v4.7)
         await client.connect();
         const postCollection = client.db("deltamanaher").collection("allposts");
         const draftCollection = client.db("deltamanaher").collection("drafts");
@@ -60,7 +58,6 @@ async function run() {
 
                 console.log("Received data:", data);
 
-                // Check if the title exists in draftCollection
                 const draft = await draftCollection.findOne({ title });
 
                 if (draft) {
@@ -68,7 +65,6 @@ async function run() {
                     await draftCollection.deleteOne({ _id: draft._id });
                 }
 
-                // Insert the data into postCollection
                 const insertResult = await postCollection.insertOne(data);
                 console.log("Data inserted into postCollection:", insertResult);
 
